@@ -1,0 +1,21 @@
+#On utilise un bouton pousoir pour allumer ou éteindre la led
+import machine
+import utime
+
+#On initialise la led en sortie et le bouton en entrée
+LED = machine.Pin(16,machine.Pin.OUT)
+BUTTON = machine.Pin(18,machine.Pin.OUT)
+
+#on associe à une variable l'état du bouton
+val=BUTTON.value()
+LED.value(1)
+#On configure une boucle while true qui lit la valeur d'un bouton et allume ou éteint une LED en fonction de cette valeur.
+#La boucle s'exécute en continu et lit constamment la valeur du bouton.
+#Si le bouton est enfoncé (valeur = 1), la LED s'allume.
+#Si le bouton est relâché (valeur = 0), la LED s'éteint. 
+while True :
+    val=BUTTON.value()
+    if val==1:
+        LED.value(1)
+    else:
+        LED.value(0)
