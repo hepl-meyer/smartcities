@@ -1,1 +1,2 @@
 
+[Potentiomètre](Potentiomètre)
