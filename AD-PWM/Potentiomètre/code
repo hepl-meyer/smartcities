@@ -1,1 +1,18 @@
+from machine import ADC,Pin
+from utime import sleep
+#Définition de la led en sortie
+LED = Pin(16,Pin.OUT)
+#Définition de ROTARY_ANGLE_SENSOR un capteur analogique rotatif connecté à l'entrée numérique 1 (ADC1)
+ROTARY_ANGLE_SENSOR=ADC(1)
+#On lit la valeur de ROTARY_ANGLE_SENSOR et on affiche sa valeur.
+#Si la valeur est comprise entre 20 000 et 40 000, LED sera mis à la valeur 1 et le code attendra 0,1 seconde avant de passer à la suite du code.
+#Dans le cas contraire, LED sera mis à la valeur 0 et le code attendra 0,1 seconde avant de passer à la suite du code.
+while True :
+    print(ROTARY_ANGLE_SENSOR.read_u16())
+    if ROTARY_ANGLE_SENSOR.read_u16()>20000 and ROTARY_ANGLE_SENSOR.read_u16()<40000:
+        LED.value(1)
+        sleep(0.1)
+    else:
+        LED.value(0)
+        sleep(0.1)
 
