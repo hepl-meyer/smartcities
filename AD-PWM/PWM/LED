@@ -1,1 +1,32 @@
+from machine import ADC,Pin,PWM
 
+#Définition de ROTARY_ANGLE_SENSOR un capteur analogique rotatif connecté à l'entrée numérique 1 (ADC1)
+ROTARY_ANGLE_SENSOR = ADC(1)
+#Définition de la led en sortie
+LED_PWM =PWM(Pin(16))
+#on initialise la fréquence de notre PWM
+LED_PWM.freq(500)
+#Ce code lit la valeur de ROTARY_ANGLE_SENSOR et applique sa valeur à LED_PWM.
+#Cela permet d'utiliser LED_PWM comme une sortie numérique et de contrôler la luminosité de LED à l'aide du capteur.
+while True :
+    val=ROTARY_ANGLE_SENSOR.read_u16()
+    LED_PWM.duty_u16(val)
+"""
+#Ce code boucle à travers une série d'instructions qui ajustent la valeur de val et appliquent cette valeur à LED_PWM.
+#La boucle commence par incrémenter la valeur de val de 50 à chaque itération, jusqu'à ce qu'elle atteigne 65535.
+#Ensuite, elle décrémente progressivement la valeur de val jusqu'à ce qu'elle atteigne 0.
+#A chaque itération, elle attend 1 milliseconde avant de passer à l'itération suivante.
+LED_PWM =PWM(Pin(16))
+
+val=0
+LED_PWM.freq(500)
+while True:
+    while val<65535:
+        val=val+50
+        utime.sleep_ms(1)
+        LED_PWM.duty_u16(val)
+    while val>0:
+        val=val-50
+        utime.sleep_ms(1)
+        LED_PWM.duty_u16(val)
+"""
