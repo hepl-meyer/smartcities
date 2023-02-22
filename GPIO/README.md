@@ -2,6 +2,6 @@ Les GPIO (General Purpose Input/Output) sont des pins qui peuvent être configur
 
 -[LED](LED)
 
--[Boutonpoussoire](Boutonpoussoire)
+-[Bouton poussoire](Bouton poussoire)
 
 -[interruptions](interruptions)
