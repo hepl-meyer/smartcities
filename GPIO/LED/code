@@ -1,0 +1,15 @@
+# File : led1.py
+# Simple led program
+# baptiste.meyer@student.hepl.be
+# 9/2/2023
+#ici on assigne la led en sortie et on l'allume tout simplement
+import machine
+
+LED = machine.Pin(16,machine.Pin.OUT)
+LED.value(0)
+
+#ici on assigne la led en sortie et on l'éteint tout simplement
+# import machine
+# 
+# LED = machine.Pin(16,machine.Pin.OUT)
+# LED.value(0)
