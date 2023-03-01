@@ -6,7 +6,7 @@
 import machine
 
 LED = machine.Pin(16,machine.Pin.OUT)
-LED.value(0)
+LED.value(1)
 
 #ici on assigne la led en sortie et on l'éteint tout simplement
 # import machine
