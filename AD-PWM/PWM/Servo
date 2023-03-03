@@ -1,1 +1,24 @@
 
+from machine import Pin,PWM
+from utime import sleep
+from servo import SERVO
+#On initialise le servo sur une pin à l'aide d'une fonction prédéfinie.
+servo=SERVO(Pin(20))
+#Ce code fait tourner un servomoteur entre 20 et 150 degrés 10 fois.
+#Après chaque tour, il y a une pause de 1 seconde.
+for i in range(10):
+    servo.turn(20)
+    sleep(1)
+    
+    servo.turn(150)
+    sleep(1)
+"""
+#Ce code fait tourner un servomoteur entre 100 et 150 degrés de manière continue.
+#Le servomoteur réduit son angle de 1 degré à chaque itération et s'arrête à 100 degrés.
+#Après chaque tour, il y a une pause de 0,1 secondes.
+a=180
+while True:
+    a=a==100 and 150 or a-1
+    servo.turn(a)
+    sleep(0.1)
+"""
