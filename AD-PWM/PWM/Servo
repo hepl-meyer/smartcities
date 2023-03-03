@@ -1,4 +1,20 @@
-
+#Ce code est la fonction qui nous permet d'utiliser plus simplement le servo moteur dans notre code
+#Ce code définit une classe SERVO qui permet de contrôler un servomoteur connecté à une broche donnée.
+#La méthode turn(self, val) définit la fréquence du signal PWM à 100 Hz et envoie une valeur correspondant à l'angle
+#de rotation souhaité au servomoteur.
+#La valeur est convertie en pourcentage et multipliée par 13000 (valeur maximale du signal PWM) et
+#4000 (valeur minimale du signal PWM).
+from machine import Pin, PWM
+class SERVO:
+    def __init__(self, pin):
+        self.pin = pin
+        self.pwm = PWM(self.pin)
+    def turn(self, val):
+        self.pwm.freq(100)
+        self.pwm.duty_u16(int(val/180*13000+4000))
+        
+        
+        
 from machine import Pin,PWM
 from utime import sleep
 from servo import SERVO
