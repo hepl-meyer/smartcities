@@ -27,3 +27,8 @@ Le but ici était simplement de jouer une mélodie à l'aide du buzzer. J'ai dé
 
 https://user-images.githubusercontent.com/124889354/222680469-c5da7136-f542-4aec-9233-8660aa7bb431.mp4
 
+
+
+[Servo](Servo):
+
+Dans cette partie j'ai appris à utiliser le servo moteur de différente manières. Les différentes explication son déja dans le code je vous montre seulement le résultat.
