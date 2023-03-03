@@ -32,3 +32,18 @@ https://user-images.githubusercontent.com/124889354/222680469-c5da7136-f542-4aec
 [Servo](Servo):
 
 Dans cette partie j'ai appris à utiliser le servo moteur de différente manières. Les différentes explication son déja dans le code je vous montre seulement le résultat.
+
+Première partie :
+
+
+https://user-images.githubusercontent.com/124889354/222683915-4b8e9307-9d68-4c3d-ab45-03e9e5a1fe34.mp4
+
+
+
+Deuxième partie :
+
+
+
+https://user-images.githubusercontent.com/124889354/222683804-cbc6647d-3b3b-4b2f-a2e8-86f13a4e8822.mp4
+
+
