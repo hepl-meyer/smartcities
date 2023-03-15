@@ -7,6 +7,6 @@ Pour montrer le bon fonctionnement nous allons afficher différents résultats.
 
 [potentiomètre](potentiomètre)
 
-[température et humidité](température_et_humidité)
+[température&humidité](température_et_humidité)
 
 [affichage date et heure](affichage_date_et_heure)
