@@ -1,1 +1,18 @@
 
+from lcd1602 import LCD1602
+from machine import I2C,Pin,ADC,PWM
+from utime import sleep
+ROTARY_ANGLE_SENSOR=ADC(0)
+i2c=I2C(1,scl=Pin(7),sda=Pin(6), freq=400000)
+d=LCD1602(i2c, 2 , 16)
+#Le code active l'écran et initialise un potentiomètre.
+#Il entre ensuite dans une boucle, où il attend une seconde
+#efface l'écran et affiche la valeur lue par le capteur de position rotative.
+#Il attend ensuite une seconde et répète le processus.
+d.display()
+while True :
+    sleep(1)
+    d.clear()
+    d.setCursor(0,0)
+    d.print(str(ROTARY_ANGLE_SENSOR.read_u16()))
+    sleep(1)
