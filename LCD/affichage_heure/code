@@ -1,0 +1,23 @@
+
+#Import of libraries
+from machine import Pin
+from lcd1602 import LCD1602
+from dht11 import *
+from machine import Pin,I2C,ADC,PWM,RTC
+from utime import sleep
+
+#initialisation de l'écran et de l'heure
+i2c=I2C(1,scl=Pin(7), sda=Pin(6), freq=400000)
+d=LCD1602(i2c,2,16)
+rtc=RTC()
+#Ce code affiche l'heure à l'aide du module du Real Time Clock (RTC) sur un écran LCD.
+#La boucle while permet de répéter l'instruction à l'intérieur de la boucle à chaque seconde.
+#La fonction datetime () est utilisée pour récupérer l'heure à partir du module RTC et la fonction print()
+#est utilisée pour afficher l'heure au format HH:MM.
+#Enfin, la fonction sleep() est utilisée pour définir un temps d'attente de 1 seconde.
+while True:
+    dt=rtc.datetime()
+    d.clear()
+    d.setCursor(0,0)
+    d.print("{:2d}:{:02d}".format(dt[4],dt[5]))
+    sleep(1)
