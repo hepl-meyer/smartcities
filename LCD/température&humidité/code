@@ -1,1 +1,42 @@
 
+from machine import Pin
+from lcd1602 import LCD1602
+from dht11 import *
+from machine import Pin,I2C,ADC,PWM
+from utime import sleep
+
+
+#initialisation de l'écran et du capteur de température et d'humidité
+i2c=I2C(1,scl=Pin(7), sda=Pin(6), freq=400000)
+d=LCD1602(i2c,2,16)
+dht=DHT(18)
+
+#caractère personnalisé représentant un degré Celsius
+degree=[
+    0b00010,
+    0b00101,
+    0b00010,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,]
+
+d.clear()
+d.create_char(0,degree)
+d.display() 
+#ce code entre ensuite dans une boucle, où il lit les données du capteur DHT11,
+#efface l'écran et affiche la température et l'humidité.
+#Il affiche également le caractère personnalisé pour le degré Celsius et
+#attend une seconde avant de répéter le processus.
+while True:
+    temp, humid=dht.readTempHumid()
+    d.clear()
+    d.setCursor(0,0)
+    d.print("Temp:{:.1f}".format(temp))
+    d.write(0)
+    d.print("C")
+    d.setCursor(0,1)
+    d.print("Humid:"+str(humid))
+    d.setCursor(8,0)
+    sleep(1)
