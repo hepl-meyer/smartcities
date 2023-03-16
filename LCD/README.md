@@ -9,4 +9,4 @@ Pour montrer le bon fonctionnement nous allons afficher différents résultats.
 
 [température&humidité](température&humidité)
 
-[affichage date et heure](affichage_date_et_heure)
+[affichage heure](affichage_heure)
