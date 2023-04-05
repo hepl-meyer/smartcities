@@ -2,6 +2,6 @@ Dans cette partie on va prendre en mains différents capteurs. Le capteur DHT11 
 
 -[Microphone](microphone)
 
--[luminosité](luminosité)
+-[LIGHT_SENSOR](LIGHT_SENSOR)
 
 -[PIR](PIR)
