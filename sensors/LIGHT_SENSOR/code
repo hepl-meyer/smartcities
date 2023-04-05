@@ -1,3 +1,4 @@
+
 from ws2812 import WS2812
 from machine import Pin,I2C,ADC
 from utime import sleep
@@ -6,29 +7,35 @@ led = WS2812(18,1)
 LIGHT_SENSOR=ADC(0)
 SOUND_SENSOR=ADC(1)
 
+BLACK =(0,0,0)
+RED=(255,0,0)
+YELLOW=(255,150,0)
+GREEN=(0,255,0)
+CYAN=(0,255,255)
+BLUE=(0,0,255)
+PURPLE=(180,0,255)
+WHITE=(255,255,255)
+"""
+le programme entre dans une boucle infinie "while True".
+A l'intérieur de cette boucle, le programme lit la valeur du capteur de lumière en utilisant la fonction "read_u16" pour obtenir une lecture analogique de 16 bits, 
+puis divise la valeur par 256 pour obtenir une valeur entre 0 et 65535.
+"""
+
 while True :
     average = 0
     light =LIGHT_SENSOR.read_u16()/256
-    for i in range (1000):
-        noise =SOUND_SENSOR.read_u16()/256
-        average += noise
-    noise= average/1000
-    print(noise)
-    
+    print(light)
+    """
+    le programme compare cette valeur à une valeur seuil (ici, 80), et si la valeur est inférieure à la valeur seuil, 
+    le programme affiche la couleur rouge sur la LED à l'aide de la fonction "pixels_fill" et "pixels_show", 
+    sinon il affiche la couleur verte. Le programme attend ensuite 0,2 seconde avant de vérifier à nouveau 
+    la valeur du capteur de lumière et de mettre à jour la couleur de la LED en conséquence.
+    """
     if light <80:
-        led.pixels_fill((255,255,255))
+        led.pixels_fill(RED)
         led.pixels_show()
         sleep(0.2)
     else:
-        if noise < 25:
-            led.pixels_fill((0,255,0))
-            led.pixels_show()
-            sleep(1)
-        if noise >= 25 and noise <50 :
-            led.pixels_fill((255,255,0))
-            led.pixels_show()
-            sleep(1)
-        if noise >= 50:
-            led.pixels_fill((255,0,0))
-            led.pixels_show()
-            sleep(1)
+        led.pixels_fill(GREEN)
+        led.pixels_show()
+        sleep(0.2)
