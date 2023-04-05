@@ -1,5 +1,5 @@
 
-from ws2812 import WS2812
+
 from machine import Pin,I2C,ADC
 from utime import sleep
 
