@@ -8,10 +8,10 @@ Le Raspberry Pi Pico est un microcontrôleur à processeur ARM Cortex-M0+ de la 
 
 -[AD-PWM](AD-PWM) : lecture du potentiomètre, PWM (LED, musique, servo).
 
--[LCD](LCD) : documentation des fonctions de la librairie, affichage de la valeur du potentiomètre.
+-[LCD](LCD) : documentation des fonctions de la librairie, affichage de la valeur du potentiomètre, affichage des valeurs données données par le capteur dht11.
 
 -[LED_neo](LED_neo) : utilisation des LEDs néopixel, documentation des fonctions de la librairie, arc-en-ciel.
 
--[sensors](sensors) : température et humidité, luminosité, PIR.
+-[sensors](sensors) : microphone, luminosité, PIR.
 
 -[network](network) : Accès réseau avec le RPi Pico.
