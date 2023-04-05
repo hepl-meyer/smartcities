@@ -1,0 +1,30 @@
+from machine import Pin
+from utime import sleep
+from servo import SERVO
+
+servo=SERVO(Pin(20))
+miniPir=Pin(18,Pin.IN)
+LED = machine.Pin(16,machine.Pin.OUT)
+"""
+La boucle while True permet au programme de s'exécuter en continu.
+A chaque itération de la boucle, le programme vérifie l'état du capteur PIR en utilisant la méthode value().
+"""
+while True:
+    """
+    Si le capteur détecte un mouvement, le message "motion detected" est affiché sur la console, la LED est allumée avec LED.value(1), 
+    le servo-moteur est tourné à un angle de 150 degrés avec servo.turn(150) et le programme attend une seconde avec sleep(1).
+    """
+    if miniPir.value()==1:
+        print('motion detected')
+        LED.value(1)
+        servo.turn(150)
+        sleep(1)
+    """
+    Si aucun mouvement n'est détecté, le message "no movement" est affiché sur la console, 
+    la LED est éteinte avec LED.value(0), le servo-moteur est tourné à un angle de 20 degrés avec servo.turn(20) et le programme attend une seconde avec sleep(1).
+    """
+    else :
+        LED.value(0)
+        print('no movement ')
+        servo.turn(20)
+        sleep(1)
