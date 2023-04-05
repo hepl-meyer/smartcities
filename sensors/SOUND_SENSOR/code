@@ -1,1 +1,45 @@
 
+from ws2812 import WS2812
+from machine import Pin,I2C,ADC
+from utime import sleep
+
+led = WS2812(18,1)
+SOUND_SENSOR=ADC(1)
+
+BLACK =(0,0,0)
+RED=(255,0,0)
+YELLOW=(255,150,0)
+GREEN=(0,255,0)
+CYAN=(0,255,255)
+BLUE=(0,0,255)
+PURPLE=(180,0,255)
+WHITE=(255,255,255)
+"""
+La boucle while True permet au programme de s'exécuter en continu. 
+A chaque itération de la boucle, le niveau sonore ambiant est mesuré en effectuant une moyenne de 1000 lectures du capteur de son. 
+La variable noise contiendra la moyenne calculée.
+"""
+while True :
+    average = 0
+    for i in range (1000):
+        noise =SOUND_SENSOR.read_u16()/256
+        average += noise
+    noise= average/1000
+    print(noise)
+    """
+    En fonction du niveau sonore mesuré, la bande de LED est allumée avec une couleur spécifique. 
+    Si le niveau sonore est inférieur à 35, la bande de LED est verte, si le niveau sonore est compris entre 35 et 50, la bande de LED est bleue, 
+    et si le niveau sonore est supérieur ou égal à 50, la bande de LED est rouge.
+    """
+    if noise < 35:
+        led.pixels_fill(GREEN)
+        led.pixels_show()
+        sleep(1)
+    if noise >= 35 and noise <50 :
+        led.pixels_fill(BLUE)
+        led.pixels_show()
+        sleep(1)
+    if noise >= 50:
+        led.pixels_fill(RED)
+        led.pixels_show()
+        sleep(1)
