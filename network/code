@@ -1,17 +1,21 @@
+#On démarre en important le module réseau et le fichier secrets.py contenant les informations de connexion.
 import network
 from secrets import *
 import utime
-
+#Ensuite, On crée un objet WLAN (Wireless Local Area Network) et l'initialise. 
+#Il active ensuite la connexion sans fil et essaie de se connecter au point d'accès Wi-Fi en utilisant les informations d'identification stockées dans le fichier "my_secrets".
 wlan = network.WLAN(network.STA_IF) # Creates a WLAN object and initializes it
 wlan.active(True)
 wlan.connect(my_secrets["ssid"],my_secrets["WiFi_pass"])
 
+#Le code affiche des messages sur la console pour informer l'utilisateur de l'état de la connexion Wi-Fi. 
+#Si la connexion échoue, il lève une exception de temps d'exécution.
 print("Connection to WiFi network.")
 print("---------------------------")
 print("Trying to connect to WiFi...")
 print()
 
-# Waits for connection or exit with error code if it fails
+
 retry = 10
 while (retry > 0):
     wlan_stat=wlan.status()
@@ -33,7 +37,8 @@ while (retry > 0):
 if wlan_stat!=3:
     raise RuntimeError('WiFi connection failed')
 
-
+#Une fois que la connexion est établie, le code affiche l'adresse IP attribuée à l'appareil par le routeur Wi-Fi et se prépare à utiliser 
+#la connexion pour accéder à Internet.
 print()
 print('Connected to WiFi network: ',end="")
 print(wlan.config("ssid"))
@@ -42,12 +47,5 @@ ip=wlan.ifconfig()
 print("IP info (IP address, mask, gateway, DNS):")
 print(ip)
 print()
-
-# Now we can use the connection to access Internet.
-
-
-
-
-
-# Close connection
+#Enfin, il ferme la connexion Wi-Fi.
 wlan.disconnect()
