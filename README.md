@@ -15,3 +15,7 @@ Le Raspberry Pi Pico est un microcontrôleur à processeur ARM Cortex-M0+ de la 
 -[sensors](sensors) : microphone, luminosité, PIR.
 
 -[network](network) : Accès réseau avec le RPi Pico.
+
+-[requests](requests) : Accès à la météo sur openweathermap.
+
+-[socket](socket) : Affichage de l'heure et la date.
