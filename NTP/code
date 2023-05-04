@@ -1,0 +1,39 @@
+import machine
+import network
+import ntptime
+import utime
+from machine import Pin, I2C, RTC
+from lcd1602 import LCD1602
+# Initialisation de l'écran 
+i2c = I2C(1, scl=Pin(7), sda=Pin(6), freq=400000)
+d = LCD1602(i2c, 2, 16)
+
+# Configurez votre réseau WiFi
+WIFI_SSID = 'SALON'
+WIFI_PASSWORD = 'marmol40'
+
+# Configurez votre serveur NTP
+NTP_SERVER = 'pool.ntp.org'
+NTP_TIMEZONE = 1
+
+# Connexion au WiFi
+print('Connexion au réseau WiFi...')
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+wlan.connect(WIFI_SSID, WIFI_PASSWORD)
+while not wlan.isconnected():
+    pass
+print('Connecté au réseau WiFi')
+
+
+# Afficher l'heure et la date sur l'ecran
+while True:
+    t = utime.localtime()
+    # Affichage de la date et de l'heure sur l'écran LCD
+    d.clear()
+    d.setCursor(0, 0)
+    d.print("{:02d}:{:02d}:{:2d}".format(t[3], t[4], t[5]))
+    d.setCursor(0, 1)
+    d.print("{:02d}/{:02d}/{:02d}".format(t[2], t[1], t[0]))
+
+    utime.sleep(1)
