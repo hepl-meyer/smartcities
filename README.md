@@ -18,4 +18,4 @@ Le Raspberry Pi Pico est un microcontrôleur à processeur ARM Cortex-M0+ de la 
 
 -[requests](requests) : Accès à la météo sur openweathermap.
 
--[socket](socket) : Affichage de l'heure et la date.
+-[NTP](NTP) : Affichage de l'heure et la date en connectant à internet.
