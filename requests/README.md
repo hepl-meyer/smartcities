@@ -1,5 +1,5 @@
 
-Le but de ce code est d'aller rechercher la météo sur openweathermap à partir d'un code python en utilisant la librairie requests?
+Le but de ce code est d'aller rechercher la météo sur openweathermap à partir d'un code python en utilisant la librairie requests.
 
 Grace au site https://jsonformatter.curiousconcept.com/# il est possible de modifier la reponse en json fournie par le code de manière à la rendre plus lisible.
 
